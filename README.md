@@ -14,6 +14,7 @@ What's there?
   Jamtracks:
   - Described by Artists (m:n), Genre, Scales(m:n), bpm, server file locations, duration, file size, file extension 
   - Scales related to jamtracks contain timestamps creating a possibility to dynamically display scales on a virtual fretboard to fit certain moments in the song ( https://localhost:8000/user/playFretboard/:jamtrackId endpoint in case of standard configuration )
+  - file upload and streamming although it still needs some attention in case of sending it to client side
   
   Management panel:
   - Basically logs, overview of interactions, their amount, user amount and lists of data by http codes the api returned to clients
