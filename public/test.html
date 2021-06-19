@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="check">Check</button>
+
+    <script>
+        window.onload = () =>{
+            const check = () =>{
+                fetch('http://localhost:8080/getProfileData').then(response => response.json()).then(data => console.log(data));
+            }
+            document.getElementById('check').addEventListener('click', check);
+        }
+    </script>
+
+    Please log in first
+</body>
+</html>

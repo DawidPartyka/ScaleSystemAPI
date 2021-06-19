@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h2>SPA Authentication Sample</h2>
+    <p>Welcome to our page!</p>
+    <button id="btn-login">Log in</button>
+    <button id="btn-logout">Log out</button>
+    <button id="btn-check">Check</button>
+    <button id="btn-test">Test</button>
+    <button id="btn-signup">Sign up</button>
+
+    <script>
+        let user;
+
+        const check = () =>{
+            console.log('checking');
+            //window.location = '/getprofiledata';
+            fetch('https://localhost:8000/getProfileData',{ redirect: 'follow' })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    }
+                    else
+                        console.log(response.json());
+                })
+                //.then(data => console.log(data))
+                .catch(function(err) {
+                    console.info(err + " url: " + url);
+                });;
+        }
+
+        const test = async () => {
+            const response = await fetch('https://localhost:8000/isauthenticated');
+
+            console.log(await response.json());
+        }
+
+        const signup = async () => {
+            //window.location = '/sign-up';
+            window.location = '/sign-up';
+
+            //console.log(await response.json());
+        }
+
+        const assignUser = (x) => {
+            console.log(x);
+            user = x;
+
+            try{
+                console.log(x);
+            }
+            catch(e){
+                console.log('err');
+                console.log(e);
+            }
+        }
+
+        const login = async () => {
+            //window.location.href = 'https://localhost:8000/profile';
+            /*console.log('fetching');
+            var auth0Client = new auth0.WebAuth({
+                domain:       'irisapitests.eu.auth0.com',
+                clientID:     'yDmSBcxuV2XaOAWCDRGeFpXjy3PHAwZr'
+            });
+            const u = await auth0Client.crossOriginVerification();
+            console.log(u);*/
+            //const response = await fetch('https://localhost:8000/profile');
+
+            //console.log(await response.json());
+            window.location = '/login';
+            /*new auth0.WebAuth({
+                //connection: 'google-oauth2',
+                domain:       'irisapitests.eu.auth0.com',
+                clientID:     'yDmSBcxuV2XaOAWCDRGeFpXjy3PHAwZr'
+            }).authorize({
+                redirectUri: 'https://localhost:8000/profile',
+                responseType: 'code'
+            }, function(err, authResult) {
+                console.log(authResult);
+                console.log(err);
+
+                //do something
+            });*/
+        };
+
+        const logout = async () => {
+            // Initialize application
+            //window.location.href = 'https://localhost:8000/logout';
+            window.location = '/logout';
+            /*const r = await fetch('https://localhost:8000/logout', {
+                mode: 'no-cors'
+            });
+
+            console.log(await r);*/
+            /*const webAuth = new auth0.WebAuth({
+                domain:       'https://irisapitests.eu.auth0.com',
+                clientID:     'yDmSBcxuV2XaOAWCDRGeFpXjy3PHAwZr'
+            });
+
+            webAuth.logout({
+                returnTo: 'https://localhost:8000/logout',
+                client_id: 'yDmSBcxuV2XaOAWCDRGeFpXjy3PHAwZr'
+            });*/
+        };
+
+        window.onload = () => {
+            document.getElementById('btn-login').addEventListener('click', login);
+            document.getElementById('btn-logout').addEventListener('click', logout);
+            document.getElementById('btn-check').addEventListener('click', check);
+            document.getElementById('btn-test').addEventListener('click', test);
+            document.getElementById('btn-signup').addEventListener('click', signup);
+        }
+    </script>
+</body>
+</html>

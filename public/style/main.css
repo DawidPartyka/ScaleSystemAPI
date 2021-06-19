@@ -1,0 +1,78 @@
+.sm-img {
+    width: auto;
+    max-height: 3vw !important;
+    min-height: 40px;
+}
+
+a {
+    cursor: pointer;
+}
+
+body {
+    background-color: #555;
+    color: antiquewhite;
+    overflow-x: hidden;
+}
+
+.day, .datepicker-switch, .prev, .next, .dow {
+    color: black;
+}
+
+label {
+    color: black;
+}
+
+main{
+    width: 100vw;
+}
+
+pre code {
+    background-color: #444;
+    border: 1px solid #999;
+    color: white;
+    display: block;
+    padding: 20px;
+    text-align: left;
+    max-height: 40vw;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.team4 {
+    font-family: "Montserrat", sans-serif;
+    color: #c3c7d2;
+    font-weight: 300;
+}
+
+.team4 h1, .team4 h2, .team4 h3, .team4 h4, .team4 h5, .team4 h6 {
+    color: #76a3ff;
+}
+
+.team4 .font-weight-medium {
+    font-weight: 500;
+}
+
+.team4 h5 {
+    line-height: 22px;
+    font-size: 18px;
+}
+
+.team4 .subtitle {
+    color: #61f8cc;
+    line-height: 24px;
+    font-size: 13px;
+}
+
+.team4 ul li a {
+    color: #ffffff;
+    padding-right: 15px;
+    -webkit-transition: 0.1s ease-in;
+    -o-transition: 0.1s ease-in;
+    transition: 0.1s ease-in;
+}
+
+.team4 ul li a:hover {
+    -webkit-transform: translate3d(0px, -5px, 0px);
+    transform: translate3d(0px, -5px, 0px);
+    color: #316ce8;
+}
