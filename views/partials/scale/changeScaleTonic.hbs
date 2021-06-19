@@ -1,0 +1,48 @@
+<div class="bg-light align-items-center text-center col p-3 ml-1 rounded">
+    <h2 class="text-info">Change scale tonic</h2>
+    <small class="form-text text-muted">Doesn't update resource. Just returns scale transformed to a different tonic</small>
+    <form id="changeScaleSchemeForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="changeScaleSchemeTonic">Choose tonic of current scale</label>
+            <select class="form-control" id="changeScaleSchemeTonic">
+                {{#each this.sound}}
+                    <option value="{{@index}}">{{this}}</option>
+                {{/each}}
+            </select>
+            <small class="form-text text-muted">Tonic being base of the given scale</small>
+        </div>
+
+        <div class="form-group">
+            <label>Choose sounds of this scale</label>
+            {{#each this.sound}}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="soundChangeScaleScheme{{@index}}" value="{{@index}}">
+                    <label class="form-check-label" for="soundChangeScaleScheme{{@index}}">{{this}}</label>
+                </div>
+            {{/each}}
+            <small class="form-text text-muted">Base scale to be changed</small>
+        </div>
+
+        <div class="form-group">
+            <label for="changeScaleSchemeTonicTarget">Choose tonic to which the scale will be shifted</label>
+            <select class="form-control" id="changeScaleSchemeTonicTarget">
+                {{#each this.sound}}
+                    <option value="{{@index}}">{{this}}</option>
+                {{/each}}
+            </select>
+            <small class="form-text text-muted">To what tonic transform the scale</small>
+        </div>
+
+        <button id="submitChangeScaleScheme" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="scaleChangeSchemeStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="scaleChangeSchemeFormResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

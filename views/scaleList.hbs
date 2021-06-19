@@ -1,0 +1,50 @@
+<div class="container mt-2">
+    {{#if this.success}}
+        <h1 class="text-primary">Scale list</h1>
+
+        {{> scale/search }}
+
+        <ul id="scalesList" class="list-group-item">
+            {{#each this.scales}}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-info">Name: {{this.name}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="text-info">Tonic: {{this.tonic}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="text-info">Created: {{this.createdAt}}</p>
+                        </div>
+                        <div class="col">
+                            <a href="{{@root.routes.showScale}}/{{this.id}}">
+                                <button class="btn btn-primary">Show</button>
+                            </a>
+                        </div>
+
+                        {{#unless @root.hideModificationButtons}}
+                            <div class="col">
+                                <a href="{{@root.routes.scaleUpdate}}/{{this.id}}">
+                                    <button class="btn btn-primary">Update</button>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-danger" onclick="deleteScale('{{this.id}}')">Delete</button>
+                            </div>
+                        {{/unless}}
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+
+        <div class="container">
+            <div id="audioContainer" class="row"></div>
+            <div id="description" class="row"></div>
+        </div>
+
+    {{else}}
+        <p class="text-warning">{{#if this.empty}}No scales found{{else}}Something went wrong on the server side{{/if}}</p>
+        <p class="text-danger">Status: {{this.status}}</p>
+    {{/if}}
+</div>

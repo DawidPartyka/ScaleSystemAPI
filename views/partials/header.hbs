@@ -1,0 +1,14 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <h2 class="float-left">Musical scales and jamtracks system</h2>
+        <div class="align-items-center">
+            {{#if this.user}}
+                <button id="btn-profile" class="btn btn-primary float-right mr-1" onclick="location.href = '{{this.routes.userprofile}}'">My Profile</button>
+                <button id="btn-logout" class="btn btn-info float-right ml-1" onclick="location.href = '{{this.routes.logout}}'">Log out</button>
+            {{else}}
+                <button id="btn-login" class="btn btn-primary float-right mr-1" onclick="location.href = '{{this.routes.login}}'">Log in</button>
+                <button id="btn-signup" class="btn btn-secondary float-right ml-1" onclick="location.href = '{{this.routes.signup}}'">Sign up</button>
+            {{/if}}
+        </div>
+    </div>
+</nav>

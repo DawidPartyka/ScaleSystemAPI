@@ -1,0 +1,22 @@
+<div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+    <h2 class="text-info">Get Jamtrack by id</h2>
+    <form id="getJamtrackByIdForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="JamtrackById">Jamtrack id</label>
+            <input type="text" class="form-control" id="JamtrackById" aria-describedby="JamtrackByIdHelp" placeholder="Enter Jamtrack id (UUIDv4)">
+            <small id="JamtrackByIdHelp" class="form-text text-muted">Jamtrack to retrieve</small>
+        </div>
+
+        <button id="submitGetJamtrackById" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="getJamtrackByIdStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="getJamtrackByIdResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

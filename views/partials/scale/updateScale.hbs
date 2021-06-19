@@ -1,0 +1,51 @@
+<div class="bg-light align-items-center text-center col p-3 ml-1 rounded">
+    <h2 class="text-info">Update scale</h2>
+    <form id="updateScaleForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="scaleId">Scale id</label>
+            <input type="text" class="form-control" id="updateScaleId" aria-describedby="scaleIdHelp" placeholder="Enter scale id (UUIDv4)">
+            <small id="scaleIdHelp" class="form-text text-muted">You're scale id. Can't change scales of other users
+                through this endpoint unless it's management account</small>
+        </div>
+
+        <div class="form-group">
+            <label for="updateScaleTonic">Change tonic</label>
+            <select class="form-control" id="updateScaleTonic">
+                <option>None</option>
+                {{#each this.sound}}
+                    <option>{{this}}</option>
+                {{/each}}
+            </select>
+            <small class="form-text text-muted">Optional but at least 1 required</small>
+        </div>
+
+        <div class="form-group">
+            <label for="scaleTonic">Choose sounds of this scale</label>
+            {{#each this.sound}}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="soundUpdate{{@index}}" value="{{@index}}">
+                    <label class="form-check-label" for="SoundUpdate{{@index}}">{{this}}</label>
+                </div>
+            {{/each}}
+            <small class="form-text text-muted">Optional but at least 1 required</small>
+        </div>
+
+        <div class="form-group">
+            <label for="updateScaleName">Scale name</label>
+            <input type="text" class="form-control" id="updateScaleName" aria-describedby="updateScaleNameHelp" placeholder="Enter scale name">
+            <small id="updateScaleNameHelp" class="form-text text-muted">Optional but at least 1 required</small>
+        </div>
+
+        <button id="submitUpdateScale" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="updateScaleStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="updateScaleFormResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

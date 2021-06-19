@@ -1,0 +1,28 @@
+<div class="bg-light align-items-left text-left col p-3 rounded">
+    <h2 class="text-info">Update time signature by id</h2>
+    <form id="updateTimeSignatureByIdForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="updateTimeSignature">Time Signature id</label>
+            <input type="text" class="form-control" id="updateTimeSignature" aria-describedby="updateTimeSignatureHelp" placeholder="Enter Time ignature id (UUIDv4)">
+            <small id="updateTimeSignatureHelp" class="form-text text-muted">Id of TimeSignature to be updated</small>
+        </div>
+
+        <div class="form-group">
+            <label for="updateTimeSignatureName">Time Signature name</label>
+            <input type="text" class="form-control" id="updateTimeSignatureName" aria-describedby="updateTimeSignatureNameHelp" placeholder="Enter Time Signature name">
+            <small id="updateTimeSignatureNameHelp" class="form-text text-muted">New name of the existing TimeSignature</small>
+        </div>
+
+        <button id="submitUpdateTimeSignatureById" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="updateTimeSignatureByIdStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="updateTimeSignatureByIdResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

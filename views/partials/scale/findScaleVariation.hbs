@@ -1,0 +1,26 @@
+<div class="bg-light align-items-center text-center col p-3 ml-1 rounded">
+    <h2 class="text-info">Find scale variations</h2>
+    <form id="scaleVariationForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="scaleSounds">Choose sounds of a scale to find variations</label>
+            {{#each this.sound}}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="soundVariation{{@index}}" value="{{@index}}">
+                    <label class="form-check-label" for="SoundVariation{{@index}}">{{this}}</label>
+                </div>
+            {{/each}}
+        </div>
+
+        <button id="submitScaleVariation" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="scaleVariationsStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="scaleVariationsResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

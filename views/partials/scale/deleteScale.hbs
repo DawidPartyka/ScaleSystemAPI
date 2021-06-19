@@ -1,0 +1,22 @@
+<div class="bg-light align-items-center text-center col p-3 ml-1 rounded">
+    <h2 class="text-warning">Delete scale by id</h2>
+    <form id="deleteScaleByIdForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="deleteScaleById">Scale id</label>
+            <input type="text" class="form-control" id="deleteScaleById" aria-describedby="deleteScaleByIdHelp" placeholder="Enter scale id (UUIDv4)">
+            <small id="deleteScaleByIdHelp" class="form-text text-muted">Delete scale by it's id</small>
+        </div>
+
+        <button id="submitDeleteIdScale" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="deleteIdScaleStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="deleteIdScaleFormResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

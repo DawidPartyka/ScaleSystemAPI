@@ -1,0 +1,53 @@
+<div class="container mt-2">
+    {{#if this.success}}
+        <h1 class="text-primary">Available jamtracks</h1>
+        {{> jamtrack/search }}
+        <ul id="jamtrackList" class="list-group-item">
+            {{#each this.jamtracks}}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-info">{{this.name}}</p>
+                        </div>
+                        <div class="col">
+                            {{#each this.Artists}}
+                                <a href="{{@root.routes.getByArtist}}/{{this.id}}"><p class="text-info">{{this.name}}</p></a>
+                            {{/each}}
+                        </div>
+                        <div class="col">
+                            <a href="{{@root.routes.getByGenre}}/{{this.Genre.id}}"><p class="text-info">{{this.Genre.name}}</p></a>
+                        </div>
+                        <div class="col">
+                            {{#each this.TimeSignatures}}
+                                <p class="text-info">{{this.signature}}</p>
+                            {{/each}}
+                        </div>
+                        <div class="col">
+                            {{#each this.Scales}}
+                                <p class="text-info">{{this.name}} {{this.tonic}} till {{this.timestamp}}</p>
+                            {{/each}}
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary" onclick="play('{{this.id}}', '{{this.ext}}')">Play</button>
+                        </div>
+
+                        <div class="col">
+                            <a href="{{@root.routes.playWithFretboard}}/{{this.id}}">
+                                <button class="btn btn-primary">Play with fretboard</button>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+
+        <div class="container">
+            <div id="audioContainer" class="row"></div>
+            <div id="description" class="row"></div>
+        </div>
+
+    {{else}}
+        <p class="text-warning">Something went wrong on the server side</p>
+        <p class="text-info">{{this.jamtracks}}</p>
+    {{/if}}
+</div>

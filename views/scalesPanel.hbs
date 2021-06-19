@@ -1,0 +1,27 @@
+<div class="container-fluid mt-2">
+    <div class="row">
+        {{> scale/createScale }}
+        {{> scale/findScaleVariation }}
+    </div>
+    <div class="row mt-2">
+        {{> scale/updateScale }}
+        {{> scale/getAllPublicScales }}
+    </div>
+
+    <div class="row mt-2">
+        {{> scale/getScaleById }}
+        {{> scale/changeScaleTonic }}
+    </div>
+
+    <div class="row mt-2">
+        {{> scale/deleteScale }}
+        {{> scale/getAllUserScales }}
+    </div>
+
+    <div class="row mt-2">
+        {{> scale/search }}
+        <div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+            <ul id="scalesList" class="list-group-item"></ul>
+        </div>
+    </div>
+</div>

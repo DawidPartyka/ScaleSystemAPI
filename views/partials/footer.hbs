@@ -1,0 +1,8 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{# routes a }}{{ routes.gitRepository }}{{/ routes }}">  <!-- <- this helper needs a dummy argument passed to work ! -->
+
+        <img src="{{# routes a }}{{ routes.img.gitIcon }}{{/ routes }}" class="sm-img" alt="Git"> Repository
+    </a>
+
+    <p class="float-right">Current version: {{ version }}</p>
+</nav>

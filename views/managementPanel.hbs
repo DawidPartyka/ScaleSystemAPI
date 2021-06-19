@@ -1,0 +1,81 @@
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="bg-light align-items-left text-left col p-3 rounded">
+            <h3 class="text-primary">Last 24 hours</h3>
+            <div class="container">
+                {{#each this.overviewData.lastDay.userAction}}
+                    <dl class="dl-horizontal bg-dark rounded p-2">
+                        <dt>Action:</dt>
+                        <dd>{{this.action}}</dd>
+                        <dt>Operation amount:</dt>
+                        <dd>{{this.count}}</dd>
+                    </dl>
+                {{/each}}
+            </div>
+
+            <div class="container bg-primary rounded row p-2">
+                <div class="col">
+                    <h5>User amount:</h5>
+                    <p>{{this.overviewData.lastDay.userCount}}</p>
+                </div>
+
+                <div class="col">
+                    <h5>Total successes:</h5>
+                    <a href="{{this.logDetailRoute}}/{{this.overviewData.lastDay.start}}/{{this.overviewData.lastDay.end}}/true">
+                        <p class="text-light">{{this.overviewData.lastDay.successes}}</p>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <h5>Total fails:</h5>
+                    <a href="{{this.logDetailRoute}}/{{this.overviewData.lastDay.start}}/{{this.overviewData.lastDay.end}}/false">
+                        <p class="text-light">{{this.overviewData.lastDay.fails}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+            <h3 class="text-primary">Last week</h3>
+            <div class="container">
+                {{#each this.overviewData.lastWeek.userAction}}
+                    <dl class="dl-horizontal bg-dark rounded p-2">
+                        <dt>Action:</dt>
+                        <dd>{{this.action}}</dd>
+                        <dt>Operation amount:</dt>
+                        <dd>{{this.count}}</dd>
+                    </dl>
+                {{/each}}
+            </div>
+
+            <div class="container bg-primary rounded row p-2">
+                <div class="col">
+                    <h5>User amount:</h5>
+                    <p>{{this.overviewData.lastWeek.userCount}}</p>
+                </div>
+
+                <div class="col">
+                    <h5>Total successes:</h5>
+                    <a href="{{this.logDetailRoute}}/{{this.overviewData.lastWeek.start}}/{{this.overviewData.lastWeek.end}}/true">
+                        <p class="text-light">{{this.overviewData.lastWeek.successes}}</p>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <h5>Total fails:</h5>
+                    <a href="{{this.logDetailRoute}}/{{this.overviewData.lastWeek.start}}/{{this.overviewData.lastWeek.end}}/false">
+                        <p class="text-light">{{this.overviewData.lastWeek.fails}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-1">
+        <div class="bg-light align-items-left text-left p-3 rounded">
+            <p class="text-info">Logged as management staff: {{this.user.management.role}}</p>
+            <p class="text-info">Current management session: {{this.user.management.sessionId}}</p>
+            <p class="text-info">Current session expiration: {{this.user.management.sessionExpire}}</p>
+        </div>
+    </div>
+</div>

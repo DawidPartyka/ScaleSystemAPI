@@ -1,0 +1,40 @@
+<div class="bg-light align-items-left text-left col p-3  ml-1 rounded">
+    <h3 class="text-info">Update jamtrack</h3>
+    <form id="updateJamtrackForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="jamtrackUpdateId">Jamtrack id</label>
+            <input type="text" class="form-control" id="jamtrackUpdateId" aria-describedby="updateIdHelp" required placeholder="Enter jamtrack id">
+            <small id="updateIdHelp" class="form-text text-muted">Jamtrack id meant to be updated</small>
+        </div>
+
+        <div class="form-group">
+            <label for="jamtrackUpdateName">Jamtrack name</label>
+            <input type="text" class="form-control" id="jamtrackUpdateName" aria-describedby="updateNameHelp" placeholder="Enter jamtrack name">
+            <small id="updateNameHelp" class="form-text text-muted">Optional</small>
+        </div>
+
+        <div class="form-group">
+            <label for="jamtrackUpdateGenre">Jamtrack genre</label>
+            <input type="text" class="form-control" id="jamtrackUpdateGenre" aria-describedby="updateGenreHelp" placeholder="Enter jamtrack genre id">
+            <small id="updateGenreHelp" class="form-text text-muted">Optional</small>
+        </div>
+
+        <div class="form-group">
+            <label for="jamtrackUpdateBPM">Jamtrack bpm</label>
+            <input type="text" class="form-control" id="jamtrackUpdateBPM" aria-describedby="updateBPMHelp" placeholder="Enter jamtrack bpm">
+            <small id="updateBPMHelp" class="form-text text-muted">Optional</small>
+        </div>
+
+        <button id="submitUpdateJamtrack" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="updateJamtrackStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="updateJamtrackResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+        <h3 class="text-info">Add jamtrack</h3>
+        <form onsubmit="return false">
+            <div class="form-group">
+                <label for="jamtrackName">Jamtrack title</label>
+                <input type="text" class="form-control" id="jamtrackName" aria-describedby="nameHelp" required placeholder="Enter jamtrack title">
+                <small id="nameHelp" class="form-text text-muted">If you decide not to fill this one the file name will be used as the title</small>
+            </div>
+
+            <div class="form-group">
+                <label for="scaleTonic">Choose scales for this jamtrack</label>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" aria-describedby="scaleHelp" type="button" id="scaledrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <div class="dropdown-menu" id="scaleSelect" aria-labelledby="dropdownMenuButton"></div>
+                </div>
+                <small id="scaleHelp" class="form-text text-muted">It's possible to add more than one</small>
+            </div>
+
+            <div class="form-group">
+                <label for="timeSignatures">Jamtrack time signatures</label>
+                <input type="text" class="form-control" id="timeSignatures" aria-describedby="timeHelp" required placeholder="Enter time signatures">
+                <small id="timeHelp" class="form-text text-muted">You can add multiple separating them by spaces like: "4/4 3/4 1/8"</small>
+            </div>
+
+            <div class="form-group">
+                <label for="newGenre">Choose genre for this jamtrack</label>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" aria-describedby="genreHelp" type="button" id="genredrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <div class="dropdown-menu" id="genreSelect" aria-labelledby="dropdownMenuButton">
+                    </div>
+                </div>
+                <small id="genreHelp" class="form-text text-muted">Alternatively write down a new one below</small>
+                <input type="text" class="form-control" id="newGenre" aria-describedby="nameHelp" placeholder="Enter new genre">
+                <small id="genreHelp" class="form-text text-muted">The genre from dropdown selection will be prioritized</small>
+            </div>
+
+            <div class="form-group">
+                <label for="newArtist">Choose artists who created this jamtrack</label>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" aria-describedby="artistHelp" type="button" id="artistdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <div class="dropdown-menu" id="artistSelect" aria-labelledby="dropdownMenuButton">
+                    </div>
+                </div>
+                <small id="artistHelp" class="form-text text-muted">It's possible to add more than one. You can also add new ones below</small>
+                <input type="text" class="form-control" id="newArtist" aria-describedby="artistHelp" placeholder="Enter new artists">
+                <small id="artistHelp" class="form-text text-muted">Add multiple by separating them with "|" sign</small>
+            </div>
+
+            <div class="form-group">
+                <label for="BPM">Jamtrack BPM</label>
+                <input type="text" class="form-control" id="BPM" aria-describedby="bpmHelp" required placeholder="Enter BPM">
+                <small id="bpmHelp" class="form-text text-muted">If there's more than one, write the average, or highest one present</small>
+            </div>
+
+            <div class="form-group">
+                <label for="formFileLg" class="form-label" aria-describedby="fileHelp">Jamtrack file</label>
+                <input class="form-control form-control-lg" id="formFile" type="file" required accept=".mp3,.wav"/>
+                <small id="fileHelp" class="form-text text-muted">Accepted extensions are .mp3 and .wav</small>
+            </div>
+
+            <button id="submitScale" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="col-md-7 bg-light align-items-left text-left ml-2 p-3 rounded">
+        <h3 class="text-info">Additional jamtrack creation data</h3>
+        <div class="container">
+            <label for="TimeSignatures">Chosen scales</label>
+            <small class="form-text text-muted">
+                Timestamps are required <strong>ONLY</strong> if there's more than one scale.
+                Write timestamps between which this scales appear in the jamtrack.
+                You can pass multiple timestamps separating them by spaces like this
+                "1:13 7:05" <br>
+                Keep in mind to provide timestamps of the moments that the scale <strong>ENDS</strong>
+                and switches to a different one, not when it starts.
+            </small>
+            <div class="container" id="chosenScales">
+
+            </div>
+        </div>
+        <div class="container">
+            <label for="TimeSignatures">Chosen genre</label>
+            <div class="container" id="chosenGenre">
+
+            </div>
+        </div>
+        <div class="container">
+            <label for="TimeSignatures">Chosen artists</label>
+            <div class="container" id="chosenArtists">
+
+            </div>
+        </div>
+    </div>
+</div>
