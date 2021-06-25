@@ -11,6 +11,7 @@ const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const { indexSound } = require('../utils/audioCalculation');
+const { CronJob } = require('cron');
 
 const fileStreams = []
 
@@ -67,8 +68,14 @@ const checkIfExistsOr404 = async (res, id) => {
 exports.addFileDescription = async (req, res) => {
     const file = validate.uploadFileDescription(req.body);
     const artists = req.body.artists.map(x => x.trim()).filter(x => x.length);
+    const localFileName = process.env.FILEPREFIX + req.body.jamtrack + file.ext;
+    const oldPath = path.join(
+        process.env.UPLOADDIR,
+        localFileName
+    );
+    const fileDuration = await fileData.getAudioLength(oldPath);
 
-    if(!file){
+    if(!file || !validate.pendingFileName(req.body.jamtrack) || !fileDuration){
         console.log(req.body);
         res.send({msg: 'Bad request. File doesn\'t exist, or supplied data is incorrect'})
             .json()
@@ -78,21 +85,13 @@ exports.addFileDescription = async (req, res) => {
     }
 
     // findByGenreOrCreate takes an array as parameter and returns an array therefore,
-    // creating/retrieving only one we're accessing only the first one with index 0
+    // creating/retrieving only one we're accessing only the first one with index 0 as well
     const genre = await genreHelper.findByGenreOrCreate([req.body.genre]);
-
-    const localFileName = process.env.FILEPREFIX + req.body.jamtrack + file.ext;
     const newPath = path.join(
         process.env.APPROVED,
         genre[0].name.trim().replace(' ', ''),
         localFileName
     );
-    const oldPath = path.join(
-        process.env.UPLOADDIR,
-        localFileName
-    );
-
-    const fileDuration = await fileData.getAudioLength(oldPath);
 
     //Adds timestamp that's equal to the duration of audio file
     if(req.body.scales.length === 1)
@@ -137,14 +136,15 @@ exports.fileUpload = async (req, res) => {
 
     // Controls file extension. If not allowed will stop the upload
     form.onPart = function (part) {
-        if(!part.filename || part.filename.match(/\.(mp3|wav)$/i))
+        if(!part.filename || part.filename.match(/\.(mp3|wav)$/i)){
             this.handlePart(part);
+        }
     }
 
     // Will create file with UUIDv4 name that will be moved to proper directory once
     // the additional form data will be passed to a addFileDescription endpoint
     form.on('file', () => {
-        fileData.move(form.uploadDir, form.uploadDir, uuidv4);
+        fileData.move(form.uploadDir, form.uploadDir, () => { return uuidv4() });
     });
 
     form.parse(req, async (err, fields, files) => {
@@ -157,13 +157,22 @@ exports.fileUpload = async (req, res) => {
         }
 
         const file = files.file;
-
-        let fileId = file.path.split('upload_').pop();
+        let fileId = file.path.split(process.env.FILEPREFIX).pop();
         fileId = fileId.slice(0, fileId.indexOf('.'));
+
+        const dummyDate = new Date();
+        const deathTime = new Date(dummyDate.getTime() + process.env.FILEDEATHTIME * 60000);
+
+        // Deletes the file from "pending" folder after time specified in ENV file under "FILEDEATHTIME" in minutes
+        new CronJob(deathTime, async function () {
+            await fileData.deleteFile(files.file.path);
+            console.log(`Deleted file laying around for too long: ${process.env.FILEDEATHTIME} minutes`);
+        }, null, true, process.env.CRONTIMEZONE).start();
 
         res.send({
             msg: 'File received - resource created',
-            uuid: fileId
+            uuid: fileId,
+            deletionTime: deathTime
         })
             .json()
             .status(201);

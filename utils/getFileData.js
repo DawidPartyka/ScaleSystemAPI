@@ -28,7 +28,7 @@ const fileOperations = {
             if (err)
                 return console.error(err);
             else
-                console.log(`Moved file ${oldPath} - ${newPath}`);
+                console.log(`>>Moved file ${oldPath} -> ${newPath}`);
         });
     },
 
@@ -50,7 +50,10 @@ const fileOperations = {
         });
     },
 
-    getAudioLength: async (file) => {
+    getAudioLength: async function (file) {
+        if(!this.checkIfExists(file))
+            return false;
+
         const fileDuration = await getAudioDurationInSeconds(file);
         const minutes = parseInt(fileDuration.toFixed() / 60);
         const seconds = parseInt(fileDuration.toFixed() - minutes * 60);

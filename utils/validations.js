@@ -3,6 +3,7 @@ const sound = require('./audioCalculation');
 const path = require('path');
 
 const uuidv4Regex = new RegExp(/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i);
+const pendingFileRegex = new RegExp(/^[0-9A-F]{32}$/i);
 const timestampRegex = new RegExp(/^\d+(:\d+)$/);
 const timesignatureRegex = new RegExp(/^\d+(\/\d+)$/);
 
@@ -39,6 +40,10 @@ const validate = {
     // checks if id is uuidv4
     uuidv4: function (id) {
         return uuidv4Regex.test(id);
+    },
+
+    pendingFileName: function (id) {
+        return pendingFileRegex.test(id);
     },
 
     uuidv4BulkCheck: function (ids){
@@ -121,6 +126,9 @@ const validate = {
             body.artists,
             body.bpm
         ]))
+            return false;
+
+        if(!this.pendingFileName(body.jamtrack))
             return false;
 
         const fileName = path.join(process.env.UPLOADDIR, process.env.FILEPREFIX + body.jamtrack);
