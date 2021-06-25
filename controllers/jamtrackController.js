@@ -123,7 +123,7 @@ exports.addFileDescription = async (req, res) => {
         .status(201);
 
     //Move the file from pending to appropriate directory
-    const newFilePath = path.join(process.env.APPROVED, genre[0].name);
+    const newFilePath = path.join(process.env.APPROVED, genre[0].name.replace(/ /g,''));
 
     if(!fileData.checkIfExists(newFilePath))
         fileData.createDir(newFilePath);
@@ -144,7 +144,7 @@ exports.fileUpload = async (req, res) => {
     // Will create file with UUIDv4 name that will be moved to proper directory once
     // the additional form data will be passed to a addFileDescription endpoint
     form.on('file', () => {
-        fileData.move(form.uploadDir, form.uploadDir, () => { return uuidv4() });
+        fileData.move(form.uploadDir, form.uploadDir, uuidv4);
     });
 
     form.parse(req, async (err, fields, files) => {
