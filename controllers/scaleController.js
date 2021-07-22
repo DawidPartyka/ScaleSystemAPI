@@ -347,7 +347,7 @@ const searchStringCheck = async (string, stringRaw, res, logTitle) => {
 // Searches through scales in Featured table
 exports.publicSearch = async (req, res) => {
     const user = await userData(req);
-    const search = req.params.search.replace('%20', ' ');
+    const search = req.params.search.replace(/%20/g, ' ');
     const logTitle = 'Scale search';
     const searchStringChecked = await searchStringCheck(search, req.params.search, res, logTitle);
 
@@ -378,7 +378,7 @@ exports.publicSearch = async (req, res) => {
 
 exports.privateSearch = async (req, res) => {
     const user = await userData(req);
-    const search = req.params.search.replace('%20', ' ');
+    const search = req.params.search.replace(/%20/g, ' ');
     const logTitle = 'Private scale search';
     const searchStringChecked = await searchStringCheck(search, req.params.search, res, logTitle);
 

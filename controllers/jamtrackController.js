@@ -67,6 +67,16 @@ const checkIfExistsOr404 = async (res, id) => {
  */
 exports.addFileDescription = async (req, res) => {
     const file = validate.uploadFileDescription(req.body);
+
+    if(!file){
+        console.log(req.body);
+        res.send({msg: 'Bad request. File doesn\'t exist, or supplied data is incorrect'})
+            .json()
+            .status(400);
+
+        return;
+    }
+
     const artists = req.body.artists.map(x => x.trim()).filter(x => x.length);
     const localFileName = process.env.FILEPREFIX + req.body.jamtrack + file.ext;
     const oldPath = path.join(
@@ -75,11 +85,10 @@ exports.addFileDescription = async (req, res) => {
     );
     const fileDuration = await fileData.getAudioLength(oldPath);
 
-    if(!file || !validate.pendingFileName(req.body.jamtrack) || !fileDuration){
-        console.log(req.body);
-        res.send({msg: 'Bad request. File doesn\'t exist, or supplied data is incorrect'})
+    if(!fileDuration){
+        res.send({msg: 'Couldn\'t get audio file duration'})
             .json()
-            .status(400);
+            .status(500);
 
         return;
     }
@@ -583,7 +592,7 @@ exports.addJamtrackTimeSignature = async (req, res) => {
 
 exports.search = async (req, res) => {
     const user = await userData(req);
-    const search = req.params.search.replace('%20', ' ');
+    const search = req.params.search.replace(/%20/g, ' ');
     const logTitle = 'Jamtrack search';
 
     if(!validate.stringValue(search) || search.length > 255){
