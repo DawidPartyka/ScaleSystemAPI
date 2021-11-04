@@ -93,3 +93,17 @@ exports.userAuthorizedToScale = async (req, res, next) => {
 
     next();
 }
+
+// string parameters are needed to be passed here
+exports.oneOrMoreQueriesPresent = (querySearchParams) => {
+    return (req, res, next) => {
+        const flag = querySearchParams.some(query => req.query[query]);
+
+        if(!flag){
+            res.status(401).send({msg: 'No parameters passed'})
+            return;
+        }
+
+        next();
+    }
+}

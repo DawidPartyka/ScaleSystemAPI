@@ -5,12 +5,14 @@ const controller = require('../controllers/jamtrackController');
 const checkManagement = require('../utils/checkManagement');
 const routes = require('./routes');
 const Jamtrack = require("../models/jamtrack");
-const { resourceIdExists } = require('../services/validations');
+const { resourceIdExists, oneOrMoreQueriesPresent } = require('../services/validations');
 
 const options = {
     notLogged: routes.user.login,
     noAuthorization: routes.noAuthorization
 }
+
+const querySearchParams = ['phrase', 'genreId', 'scaleId'];
 
 // Filestream simply check oidc param in passed request in controller as otherwise the
 // headers sent from checkUser would throw errors with the headers responsible
@@ -32,8 +34,8 @@ router.get('/getByGenre/:genreId', checkUser, controller.getJamtracksByGenre);
 router.get('/getById/:id', checkUser, resourceIdExists(Jamtrack, 'id', false), controller.getJamtrackById);
 router.get('/getByIdToken/:token/:id', requireToken, checkUser, resourceIdExists(Jamtrack, 'id', false), controller.getJamtrackById);
 router.get('/search/:search', checkUser, controller.search);
-router.get('/searchComplex', checkUser, controller.complexSearch);
-router.get('/searchComplexToken/:token', requireToken, checkUser, controller.complexSearch);
+router.get('/searchComplex', checkUser, oneOrMoreQueriesPresent(querySearchParams), controller.complexSearch);
+router.get('/searchComplexToken/:token', requireToken, checkUser, oneOrMoreQueriesPresent(querySearchParams), controller.complexSearch);
 
 router.patch('/update', checkManagement(options), controller.updateJamtrack);
 

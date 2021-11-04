@@ -696,6 +696,7 @@ exports.search = async (req, res) => {
 
 exports.complexSearch = async (req, res) => {
     const { phrase, genreId, scaleId } = req.query;
+
     let err;
     const attributes = ['id', 'name', 'bpm', 'duration', 'ext'];
     const include = [Genre];
