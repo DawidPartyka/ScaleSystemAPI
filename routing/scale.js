@@ -18,6 +18,8 @@ router.get('/searchPrivate/:search', checkUser, controller.privateSearch)
 router.get('/scaleVariations/:sounds', controller.findScaleWithVariations);
 router.get('/changescaletonic/:tonic/:targetTonic/:sounds', controller.scaleToTonic);
 router.get('/findPossibleScales/:sounds', checkUser, controller.findPossibleScales);
+router.get('/nameList', checkUser, controller.scaleNameList);
+router.get('/nameListToken/:token', requireToken, checkUser, controller.scaleNameList);
 
 router.patch('/update', checkUser, controller.update);
 
@@ -26,5 +28,5 @@ router.delete('/deletebyid/:scaleId', controller.delete);
 
 module.exports = {
     basePath: '/scale',
-    router: router
+    router
 }

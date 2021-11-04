@@ -1,11 +1,12 @@
-const { Genre } = require('../models/allModels');
-const genericRouter = require('./genericRouter');
+const express = require('express');
+const router = express.Router();
+const  { checkUser, requireToken } = require('../services/authentication');
+const controller = require('../controllers/genreController');
 
-const router = genericRouter(
-    Genre,
-    'genre',
-    'Genre',
-    'name'
-);
+router.get('/nameListToken/:token', requireToken, checkUser, controller.nameList);
+router.get('/nameList', checkUser, controller.nameList);
 
-module.exports = router.create();
+module.exports = {
+    basePath: '/genre',
+    router
+}

@@ -2,6 +2,7 @@ const userRoutes = require('./user');
 const mainRoutes = require('./main');
 const managementRoutes = require('./management');
 const scaleRoutes = require('./scale');
+const genericGenreRoutes = require('./genericGenre');
 const genreRoutes = require('./genre');
 const timeSignatureRoutes = require('./timeSignature');
 const jamtrackRoutes = require('./jamtrack');
@@ -13,6 +14,7 @@ module.exports = [
     managementRoutes,
     scaleRoutes,
     genreRoutes,
+    genericGenreRoutes,
     timeSignatureRoutes,
     jamtrackRoutes,
     artistRoutes

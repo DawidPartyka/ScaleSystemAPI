@@ -28,5 +28,5 @@ router.get('/about', controller.about);
 
 module.exports = {
     basePath: '/',
-    router: router
+    router
 }

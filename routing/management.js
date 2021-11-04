@@ -24,5 +24,5 @@ router.get('/logdetails/:start/:end/:success', checkUser, checkManagement(option
 
 module.exports = {
     basePath: '/management',
-    router: router
+    router
 }

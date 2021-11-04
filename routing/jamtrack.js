@@ -32,6 +32,8 @@ router.get('/getByGenre/:genreId', checkUser, controller.getJamtracksByGenre);
 router.get('/getById/:id', checkUser, resourceIdExists(Jamtrack, 'id', false), controller.getJamtrackById);
 router.get('/getByIdToken/:token/:id', requireToken, checkUser, resourceIdExists(Jamtrack, 'id', false), controller.getJamtrackById);
 router.get('/search/:search', checkUser, controller.search);
+router.get('/searchComplex', checkUser, controller.complexSearch);
+router.get('/searchComplexToken/:token', requireToken, checkUser, controller.complexSearch);
 
 router.patch('/update', checkManagement(options), controller.updateJamtrack);
 
@@ -42,5 +44,5 @@ router.delete('/deleteScale/:jamtrackId/:scaleId', checkManagement(options), con
 
 module.exports = {
     basePath: '/jamtrack',
-    router: router
+    router
 }

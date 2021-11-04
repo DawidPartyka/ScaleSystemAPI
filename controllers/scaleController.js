@@ -1,3 +1,4 @@
+const { Scale } = require("../models/allModels");
 const Management = require('../models/management');
 const scaleHelper = require('./helpers/scaleModelHandler');
 const userLogHelper = require('./helpers/userLogModelHandler');
@@ -172,6 +173,15 @@ exports.findScaleWithVariations = async (req, res) => {
       .status(200);
 
     await userLogHelper.createLog(logTitle, user, 200);
+}
+
+exports.scaleNameList = async (req, res) => {
+    const scales = await Scale.findAll({
+        attributes: ['name', 'id']
+    });
+
+    res.status(scales.length ? 200 : 404)
+        .send(scales);
 }
 
 // scaleHelper will check if resource can be updated by specific user along the way

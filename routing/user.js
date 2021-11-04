@@ -36,5 +36,5 @@ router.get('/showScale/:id', checkUser, controller.showScale);
 
 module.exports = {
     basePath: '/user',
-    router: router
+    router
 }

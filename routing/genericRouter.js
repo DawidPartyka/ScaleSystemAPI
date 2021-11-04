@@ -34,7 +34,7 @@ class GenericRouter{
 
         return {
             basePath: `/${this.routeName}`,
-            router: router
+            router
         }
     }
 }

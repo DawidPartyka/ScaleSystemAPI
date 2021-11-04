@@ -1,4 +1,4 @@
-const { Jamtrack, Genre, Artist, Scale, TimeSignature, Cover } = require('../models/allModels');
+const { Jamtrack, Genre, Artist, Scale, TimeSignature, Cover, JamtrackScales } = require('../models/allModels');
 const userLogHelper = require('./helpers/userLogModelHandler');
 const userData = require('./helpers/userRequestData');
 const routes = require('../routing/routes');
@@ -12,6 +12,8 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const { indexSound } = require('../utils/audioCalculation');
 const { CronJob } = require('cron');
+const nameSearch = require('./options/searchByNameOptions');
+
 
 const fileStreams = []
 
@@ -690,6 +692,72 @@ exports.search = async (req, res) => {
         search: search,
         raw: req.params.search
     }));
+}
+
+exports.complexSearch = async (req, res) => {
+    const { phrase, genreId, scaleId } = req.query;
+    let err;
+    const attributes = ['id', 'name', 'bpm', 'duration', 'ext'];
+    const include = [Genre];
+
+    const searchOptions = phrase ? nameSearch(phrase.replace(/%20/g, ' ').trim()) : {};
+
+    if(genreId) {
+        Object.assign(searchOptions, {
+            GenreId: genreId
+        });
+    }
+
+    const jamtracks = await Jamtrack.findAll({
+        where: searchOptions,
+        attributes,
+        include
+    }).catch(e => err = e);
+
+    if(err){
+        console.warn(err);
+        res.status(500)
+            .send({msg: err});
+        return;
+    }
+
+    if(scaleId) {
+        const jamtracksWithScale = [];
+        const jamtrackScales = await JamtrackScales.findAll({
+            where: {
+                ScaleId: scaleId
+            }
+        }).catch(e => err = e);
+
+        if(err){
+            console.warn(err);
+            res.status(500)
+                .send({msg: err});
+            return;
+        }
+
+        for(const jamtrack of jamtrackScales) {
+            const search = {
+                id: jamtrack.JamtrackId
+            }
+
+            Object.assign(search, searchOptions);
+
+            const current = await Jamtrack.findOne({
+                where: search,
+                attributes,
+                include
+            }).catch(e => err = e);
+
+            if(current)
+                jamtracksWithScale.push(current);
+        }
+
+        jamtracks.concat(jamtracksWithScale);
+    }
+
+    res.status(jamtracks.length ? 200 : 404)
+        .send(jamtracks);
 }
 
 const renderJamtrackList = (res, data, user) => {
