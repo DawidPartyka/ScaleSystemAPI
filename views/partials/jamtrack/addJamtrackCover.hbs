@@ -1,0 +1,28 @@
+<div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+    <h3 class="text-info">Add jamtrack cover</h3>
+    <form id="addJamtrackCoverForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="jamtrackCoverAddId">Jamtrack id</label>
+            <input type="text" class="form-control" id="jamtrackCoverAddId" aria-describedby="addCoverIdHelp" required placeholder="Enter jamtrack id">
+            <small id="addCoverIdHelp" class="form-text text-muted">Jamtrack id from which cover is meant to be added</small>
+        </div>
+
+        <div class="form-group">
+            <label for="coverAddId">Cover image</label>
+            <input class="form-control form-control-lg" id="formFileCover" type="file" required accept=".jpeg,.png"/>
+            <small id="coverAddIdHelp" class="form-text text-muted">Accepted formats: .jpeg, .png</small>
+        </div>
+
+        <button id="submitAddJamtrackCover" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="addJamtrackCoverStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+            <code id="addJamtrackCoverResponse">
+            </code>
+        </pre>
+    </div>
+</div>
