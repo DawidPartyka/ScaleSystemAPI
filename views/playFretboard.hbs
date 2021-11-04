@@ -1,0 +1,42 @@
+<div class="row bg-info p-2 text-light">
+    <div class="col">
+        <p>{{this.jamtrackData.name}}</p>
+    </div>
+    <div class="col">
+        {{#each this.jamtrackData.Artists}}
+            <a href="{{@root.routes.getByArtist}}/{{this.id}}"><p>{{this.jamtrackData.name}}</p></a>
+        {{/each}}
+    </div>
+    <div class="col">
+        <a href="{{@root.routes.getByGenre}}/{{this.jamtrackData.Genre.id}}">
+            <p class="text-light">
+                {{this.jamtrackData.Genre.name}}
+            </p>
+        </a>
+    </div>
+    <div class="col">
+        {{#each this.jamtrackData.TimeSignatures}}
+            <p>{{this.signature}}</p>
+        {{/each}}
+    </div>
+    <div class="col">
+        {{#each this.jamtrackData.Scales}}
+            <p>{{this.name}} {{this.tonic}} till {{this.timestamp}}</p>
+        {{/each}}
+    </div>
+    <div class="col">
+        <button class="btn btn-primary">Play</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container-fluid">
+        <div id="fretboard"></div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div id="audioContainer" class="row"></div>
+    <div id="description" class="row"></div>
+</div>

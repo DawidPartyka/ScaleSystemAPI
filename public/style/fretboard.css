@@ -1,0 +1,88 @@
+#fretboard {
+    position: relative;
+    right: 10vw;
+    min-width: 130%;
+}
+
+.na{
+    background-color: #1F55BC;
+}
+
+.nas{
+    background-color: #228692;
+}
+
+.nb{
+    background-color: #1a826e;
+}
+
+.nc{
+    background-color: #1FDDAF;
+}
+
+.ncs{
+    background-color: #AA51A1;
+}
+
+.nd{
+    background-color: #b15366;
+}
+
+.nds{
+    background-color: #525229;
+}
+
+.ne{
+    background-color: #249041;
+}
+
+.nf{
+    background-color: #90673e;
+}
+
+.nfs{
+    background-color: #e3004b;
+}
+
+.ng{
+    background-color: #ea6d35;
+}
+
+.ngs{
+    background-color: #0e3803;
+}
+
+.fret_place {
+    cursor: pointer;
+    min-height: 4.5vh;
+    border-top: 0.5px solid black;
+    border-bottom: 0.5px solid black;
+    background-image: url("../img/fret.png");
+    background-size: cover;
+}
+
+.fret_mark{
+    width: 80%;
+    text-align: center;
+}
+
+.fret_place:nth-child(odd) {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    width: 4%;
+}
+
+.custom-select{
+    width: 20% !important;
+}
+
+.fret_lane{
+    max-width: 90vw;
+    margin-left: 10vw;
+}
+
+.fixed_tuning{
+    width: 2vw;
+    text-align: center;
+    border: solid 1px black;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h2>SPA Authentication Sample</h2>
+    <p>Welcome to our page!</p>
+    <button id="btn-login">Log in</button>
+    <button id="btn-logout">Log out</button>
+    <button id="btn-check">Check</button>
+    <button id="btn-test">Test</button>
+
+    <script>
+        let user;
+
+        const check = () =>{
+            console.log('checking');
+            //window.location = '/getprofiledata';
+            fetch('https://localhost:8000/getProfileData',{ redirect: 'follow' })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    }
+                    else
+                        console.log(response.json());
+                })
+                //.then(data => console.log(data))
+                .catch(function(err) {
+                    console.info(err + " url: " + url);
+                });
+        }
+
+        const test = async () => {
+            const response = await fetch('https://localhost:8000/isauthenticated');
+
+            console.log(await response.json());
+        }
+
+        const login = async () => {
+            window.location = '/login';
+        };
+
+        const logout = async () => {
+            window.location = '/logout';
+        };
+
+        window.onload = () => {
+            document.getElementById('btn-login').addEventListener('click', login);
+            document.getElementById('btn-logout').addEventListener('click', logout);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+    <h2 class="text-info">Create Genre</h2>
+    <form id="createGenreForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="createGenre">Genre id</label>
+            <input type="text" class="form-control" id="createGenre" aria-describedby="createGenreHelp" placeholder="Enter genre name">
+            <small id="createGenreHelp" class="form-text text-muted">New name for existing genre</small>
+        </div>
+
+        <button id="submitCreateGenre" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="createGenreStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="createGenreResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

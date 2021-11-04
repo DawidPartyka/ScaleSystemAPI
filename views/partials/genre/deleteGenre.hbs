@@ -1,0 +1,22 @@
+<div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+    <h2 class="text-info">Delete Genre by id</h2>
+    <form id="deleteGenreByIdForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="deleteGenre">Genre id</label>
+            <input type="text" class="form-control" id="deleteGenre" aria-describedby="deleteGenreHelp" placeholder="Enter Genre id (UUIDv4)">
+            <small id="deleteGenreHelp" class="form-text text-muted">Id of a genre meant for deletion</small>
+        </div>
+
+        <button id="submitDeleteGenreById" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="deleteGenreByIdStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="deleteGenreByIdResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="container">
+        <div id="optionForms">
+            <select id="chooseScale" class="browser-default custom-select scaleChg">
+                <option selected disabled>Choose a scale</option>
+            </select>
+
+            <select id="choosePrivateScale" class="browser-default custom-select scaleChg">
+                <option selected disabled>Choose a private scale</option>
+            </select>
+
+            <select id="scaleTon" class="browser-default custom-select scaleChg">
+                {{#each this.sound}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        </br>
+        </br>
+        <div class="container-fluid">
+            <div id="fretboard"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Choose sounds to present them on the fretboard</label>
+            <div id="soundButtons" class="row">
+                {{#each this.sound}}
+                    <button class="btn btn-primary float-left ml-1 col" value="{{this}}">{{this}}</button>
+                {{/each}}
+            </div>
+            <div id="findOutScale" class="row">
+                <button class="btn btn-primary float-left ml-1 mt-1 col" id="whatScaleIsIt">Check what scale could it possibly be</button>
+            </div>
+        </div>
+
+        <div class="form-group bg-info align-items-center text-center col p-3 ml-1 rounded w-25">
+            <label>Save this scale to private library</label>
+            <div class="container">
+                <button id="saveUserScale" class="btn btn-primary">Save</button>
+            </div>
+
+            <div id="hiddenFormContainer" class="container top-50 start-50 d-none">
+                <form id="hiddenForm" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="scaleName">Scale name</label>
+                        <input type="text" class="form-control" id="scaleName" aria-describedby="scaleHelp" placeholder="Enter scale name">
+                        <small id="scaleHelp" class="form-text text-muted">What's the basic name of the scale. Pentatonic, Ionian or whatever.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="scaleTonicOption">Choose tonic of this scale</label>
+                        <select class="form-control" id="scaleTonicOption">
+                            {{#each this.sound}}
+                                <option>{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col">
+                            <button id="saveCancel" class="btn btn-danger">Cancel</button>
+                        </div>
+
+                        <div class="col">
+                            <button id="saveConfirm" class="btn btn-success">Confirm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

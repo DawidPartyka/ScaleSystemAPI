@@ -1,0 +1,28 @@
+<div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+    <h3 class="text-info">Add jamtrack - artist relation</h3>
+    <form id="addJamtrackArtistForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="jamtrackArtistAddId">Jamtrack id</label>
+            <input type="text" class="form-control" id="jamtrackArtistAddId" aria-describedby="addArtistIdHelp" required placeholder="Enter jamtrack id">
+            <small id="addArtistIdHelp" class="form-text text-muted">Jamtrack id from which scale is meant to be deleted</small>
+        </div>
+
+        <div class="form-group">
+            <label for="artistAddId">Artist id</label>
+            <input type="text" class="form-control" id="artistAddId" aria-describedby="artistAddIdHelp" required placeholder="Enter artist id">
+            <small id="artistAddIdHelp" class="form-text text-muted">Artist id meant to be added</small>
+        </div>
+
+        <button id="submitAddJamtrackArtist" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="addJamtrackArtistStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="addJamtrackArtistResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

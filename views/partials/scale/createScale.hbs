@@ -1,0 +1,49 @@
+<div class="bg-light align-items-center text-center col p-3 rounded">
+    <h2 class="text-info">Create scale</h2>
+    <form id="addScaleForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="scaleName">Scale name</label>
+            <input type="text" class="form-control" id="scaleName" aria-describedby="scaleHelp" placeholder="Enter scale name">
+            <small id="scaleHelp" class="form-text text-muted">What's the basic name of the scale. Pentatonic, Ionian or whatever.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="scaleTonicOption">Choose tonic of this scale</label>
+            <select class="form-control" id="scaleTonicOption">
+                {{#each this.sound}}
+                    <option>{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="scaleTonic">Choose sounds of this scale</label>
+            {{#each this.sound}}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="sound{{@index}}" value="{{@index}}">
+                    <label class="form-check-label" for="sound{{@index}}">{{this}}</label>
+                </div>
+            {{/each}}
+        </div>
+
+        <div class="form-group">
+            <label for="scaleTonic">Should this scale be featured?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="featured">
+                <label class="form-check-label" for="featured">Featured scale</label>
+            </div>
+        </div>
+
+        <button id="submitScale" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="addScaleStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="addScaleFormResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

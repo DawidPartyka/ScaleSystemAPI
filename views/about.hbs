@@ -1,0 +1,324 @@
+<div class="container px-4 py-5" xmlns="http://www.w3.org/1999/html">
+    <h2 class="row">What is it?</h2>
+
+    <div class="row">
+        <div class="col">
+            <img src="{{# routes a }}{{ routes.img.pleaseWait }}{{/ routes }}" class="img-fluid">
+        </div>
+
+        <div class="col">
+            Basically it's a musical scales and jamtracks database connected to the frontend through closed API
+            which implements authentication and authorization supplied by Auth0. <br><br>
+            It's able to find scales by id, name, few or all sounds contained in this scales without regard to its tonic.
+            Logged users can display and alter the scale on a virtual fretboard
+            <a href="{{# routes a }}{{ routes.user.fretboard }}{{/ routes }}">right here.</a> There it is also
+            possible to create and save your own scales, as well as finding all matching scales to the one you'd be
+            currently using. <br><br>
+            In parallel to everything related to musical scales there're jamtracks. All of them are described by
+            average bpm, time signatures, artists, genre and most importantly scales that are additionally supplied with timestamps
+            so that you can play a jamtrack with fretboard below displaying correct scale for any given moment in the song.
+            The songs you are listening to are being streamed allowing you to rewind them back and forth (ik wow, revolution).
+            All the jamtracks are stored serverside in a form of either .mp3 or .wav file.
+
+            <br><br>
+            <small class="text-muted">Let's be honest. It's not a frontend skill show. Looks kinda like hot garbage ngl.</small>
+        </div>
+    </div>
+</div>
+
+<div class="container px-4 py-5">
+    <h2>Technologies and dependencies</h2>
+
+    
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <img src="{{# routes a }}{{ routes.img.html }}{{/ routes }}" class="sm-img">
+            <div>
+                <h4 class="fw-bold mb-0">HTML</h4>
+                <a href="https://devdocs.io/html/">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <img src="{{# routes a }}{{ routes.img.css }}{{/ routes }}" class="sm-img">
+            <div>
+                <h4 class="fw-bold mb-0">CSS</h4>
+                <a href="https://devdocs.io/css/">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <img src="{{# routes a }}{{ routes.img.js }}{{/ routes }}" class="sm-img">
+            <div>
+                <h4 class="fw-bold mb-0">JS</h4>
+                <a href="https://devdocs.io/javascript/">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <img src="{{# routes a }}{{ routes.img.node }}{{/ routes }}" class="sm-img">
+            <div>
+                <h4 class="fw-bold mb-0">NodeJS</h4>
+                <a href="https://devdocs.io/node/">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <img src="{{# routes a }}{{ routes.img.postgres }}{{/ routes }}" class="sm-img">
+            <div>
+                <h4 class="fw-bold mb-0">Postgres</h4>
+                <a href="https://devdocs.io/node/">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <img src="{{# routes a }}{{ routes.img.auth0 }}{{/ routes }}" class="sm-img">
+            <div>
+                <h4 class="fw-bold mb-0">Auth0</h4>
+                <a href="https://auth0.com/docs/api">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <img src="{{# routes a }}{{ routes.img.express }}{{/ routes }}" class="sm-img">
+            <div>
+                <h4 class="fw-bold mb-0">Express</h4>
+                <a href="https://devdocs.io/express/">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <img src="{{# routes a }}{{ routes.img.sequelize }}{{/ routes }}" class="sm-img">
+            <div>
+                <h4 class="fw-bold mb-0">Sequelize</h4>
+                <a href="https://devdocs.io/sequelize/">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <img src="{{# routes a }}{{ routes.img.handlebars }}{{/ routes }}" class="sm-img">
+            <div>
+                <h4 class="fw-bold mb-0">express-handlebars</h4>
+                <a href="https://www.npmjs.com/package/express-handlebars">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <div>
+                <h4 class="fw-bold mb-0">dotenv</h4>
+                <a href="https://www.npmjs.com/package/dotenv">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <div>
+                <h4 class="fw-bold mb-0">body-parser</h4>
+                <a href="https://www.npmjs.com/package/body-parser">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <div>
+                <h4 class="fw-bold mb-0">get-audio-duration</h4>
+                <a href="https://www.npmjs.com/package/get-audio-duration">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <div>
+                <h4 class="fw-bold mb-0">express-openid-connect</h4>
+                <a href="https://www.npmjs.com/package/express-openid-connect">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+
+        <div class="col d-flex align-items-start mt-2 p-3 ">
+            <div>
+                <h4 class="fw-bold mb-0">node-cron</h4>
+                <a href="https://www.npmjs.com/package/cron">Go to site<span>&#8594;</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-5 team4">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-7 text-center">
+                <h3 class="mb-3">Our great team</h3>
+                <h6 class="subtitle">Diversity is our motto. With this many personalities among our ranks, by sharing
+                    ideas and supporting each other we strive to bring the best products to out customers. </h6>
+            </div>
+        </div>
+        <div class="row">
+            <!-- column  -->
+            <div class="col-lg-3 mb-4">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{# routes a }}{{ routes.img.gitpfp }}{{/ routes }}" alt="gitpfp" class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="pt-2">
+                            <h5 class="mt-4 font-weight-medium mb-0">Dawid Partyka</h5>
+                            <h6 class="subtitle mb-3">Database Administrator</h6>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{{# routes a }}{{ routes.git }}{{/ routes }}" class="text-decoration-none d-block px-1"><i class="fab fa-github"> profile</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+            </div>
+
+            <div class="col-lg-3 mb-4">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{# routes a }}{{ routes.img.gitpfp }}{{/ routes }}" alt="gitpfp" class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="pt-2">
+                            <h5 class="mt-4 font-weight-medium mb-0">Dawid Partyka</h5>
+                            <h6 class="subtitle mb-3">System Analyst</h6>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{{# routes a }}{{ routes.git }}{{/ routes }}" class="text-decoration-none d-block px-1"><i class="fab fa-github"> profile</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+            </div>
+
+            <div class="col-lg-3 mb-4">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{# routes a }}{{ routes.img.gitpfp }}{{/ routes }}" alt="gitpfp" class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="pt-2">
+                            <h5 class="mt-4 font-weight-medium mb-0">Dawid Partyka</h5>
+                            <h6 class="subtitle mb-3">System Designer</h6>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{{# routes a }}{{ routes.git }}{{/ routes }}" class="text-decoration-none d-block px-1"><i class="fab fa-github"> profile</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+            </div>
+
+            <div class="col-lg-3 mb-4">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{# routes a }}{{ routes.img.gitpfp }}{{/ routes }}" alt="gitpfp" class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="pt-2">
+                            <h5 class="mt-4 font-weight-medium mb-0">Dawid Partyka</h5>
+                            <h6 class="subtitle mb-3">Information Security Analyst</h6>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{{# routes a }}{{ routes.git }}{{/ routes }}" class="text-decoration-none d-block px-1"><i class="fab fa-github"> profile</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+            </div>
+
+            <div class="col-lg-3 mb-4">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{# routes a }}{{ routes.img.dependabot }}{{/ routes }}" alt="gitpfp" class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="pt-2">
+                            <h5 class="mt-4 font-weight-medium mb-0">Dependabot</h5>
+                            <h6 class="subtitle mb-3">Security Specialist</h6>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{{# routes a }}{{ routes.gitDependabot }}{{/ routes }}" class="text-decoration-none d-block px-1"><i class="fab fa-github"> profile</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+            </div>
+
+            <div class="col-lg-3 mb-4">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{# routes a }}{{ routes.img.gitpfp }}{{/ routes }}" alt="gitpfp" class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="pt-2">
+                            <h5 class="mt-4 font-weight-medium mb-0">Dawid Partyka</h5>
+                            <h6 class="subtitle mb-3">Frontend Developer</h6>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{{# routes a }}{{ routes.git }}{{/ routes }}" class="text-decoration-none d-block px-1"><i class="fab fa-github"> profile</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+            </div>
+
+            <div class="col-lg-3 mb-4">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{# routes a }}{{ routes.img.gitpfp }}{{/ routes }}" alt="gitpfp" class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="pt-2">
+                            <h5 class="mt-4 font-weight-medium mb-0">Dawid Partyka</h5>
+                            <h6 class="subtitle mb-3">Backend Developer</h6>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{{# routes a }}{{ routes.git }}{{/ routes }}" class="text-decoration-none d-block px-1"><i class="fab fa-github"> profile</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+            </div>
+
+            <div class="col-lg-3 mb-4">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{# routes a }}{{ routes.img.gitpfp }}{{/ routes }}" alt="gitpfp" class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="pt-2">
+                            <h5 class="mt-4 font-weight-medium mb-0">Dawid Partyka</h5>
+                            <h6 class="subtitle mb-3">Tester</h6>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{{# routes a }}{{ routes.git }}{{/ routes }}" class="text-decoration-none d-block px-1"><i class="fab fa-github"> profile</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+            </div>
+        </div>
+    </div>
+</div>

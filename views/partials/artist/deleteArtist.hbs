@@ -1,0 +1,22 @@
+<div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+    <h2 class="text-info">Delete Artist by id</h2>
+    <form id="deleteArtistByIdForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="deleteArtist">Artist id</label>
+            <input type="text" class="form-control" id="deleteArtist" aria-describedby="deleteArtistHelp" placeholder="Enter artist id (UUIDv4)">
+            <small id="deleteArtistHelp" class="form-text text-muted">Id of an artist meant for deletion</small>
+        </div>
+
+        <button id="submitDeleteArtistById" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="deleteArtistByIdStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="deleteArtistByIdResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

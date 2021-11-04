@@ -1,0 +1,18 @@
+<h2>SPA Authentication Sample</h2>
+<p>
+    Welcome to our page{{#if this.user}}
+        {{this.user.nickname}}!
+    {{else}}, please log in.
+    {{/if}}
+</p>
+
+{{#if this.user}}
+    <button id="btn-profile" class="btn btn-primary" onclick="location.href = '{{this.routes.userprofile}}'">My Profile</button>
+    <button id="btn-logout" class="btn btn-info" onclick="location.href = '{{this.routes.logout}}'">Log out</button>
+{{else}}
+    <button id="btn-login" class="btn btn-primary" onclick="location.href = '{{this.routes.login}}'">Log in</button>
+    <button id="btn-signup" class="btn btn-secondary" onclick="location.href = '{{this.routes.singup}}'">Sign up</button>
+{{/if}}
+
+<button id="btn-check" class="btn btn-secondary">Check</button>
+<button id="btn-test" class="btn btn-secondary">Test</button>

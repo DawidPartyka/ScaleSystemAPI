@@ -1,0 +1,45 @@
+<div class="bg-light align-items-left text-left col p-3  ml-1 rounded">
+    <h3 class="text-info">Add jamtrack - scale relation</h3>
+    <form id="addJamtrackScaleForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="jamtrackScaleAddId">Jamtrack id</label>
+            <input type="text" class="form-control" id="jamtrackScaleAddId" aria-describedby="addScaleIdHelp" required placeholder="Enter jamtrack id">
+            <small id="addScaleIdHelp" class="form-text text-muted">Jamtrack id from which scale is meant to be deleted</small>
+        </div>
+
+        <div class="form-group">
+            <label for="scaleAddId">Scale id</label>
+            <input type="text" class="form-control" id="scaleAddId" aria-describedby="scaleAddIdHelp" required placeholder="Enter scale id">
+            <small id="scaleAddIdHelp" class="form-text text-muted">Scale id meant to be added</small>
+        </div>
+
+        <div class="form-group">
+            <label for="scaleAddTimeStamps">Scale timestamps</label>
+            <input type="text" class="form-control" id="scaleAddTimeStamps" aria-describedby="scaleAddTimeStampsHelp" required placeholder="Enter scale timestamps">
+            <small id="scaleAddTimeStampsHelp" class="form-text text-muted">Multiple timestamps can be passed as long as
+            those are separated with spaces</small>
+        </div>
+
+        <div class="form-group">
+            <label for="addScaleSchemeTonic">Choose tonic of this scale</label>
+            <select class="form-control" id="addScaleSchemeTonic">
+                {{#each this.sound}}
+                    <option value="{{@index}}">{{this}}</option>
+                {{/each}}
+            </select>
+            <small class="form-text text-muted">Tonic being base of the given scale</small>
+        </div>
+
+        <button id="submitAddJamtrackScale" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="addJamtrackScaleStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+            <code id="addJamtrackScaleResponse">
+            </code>
+        </pre>
+    </div>
+</div>

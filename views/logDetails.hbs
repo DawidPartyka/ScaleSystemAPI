@@ -1,0 +1,45 @@
+<div class="container-fluid h-75 overflow-auto">
+    {{#unless this.empty}}
+        {{#each this.logs}}
+            <div class="container bg-dark text-light rounded p-2 mt-1 mb-1">
+                <div class="row">
+                    <div class="col">
+                        Action: </br>{{this.action}}
+                    </div>
+
+                    <div class="col">
+                        Date: </br>{{this.createdAt}}
+                    </div>
+
+                    <div class="col">
+                        IP: </br>{{this.ip}}
+                    </div>
+
+                    <div class="col">
+                        User: </br>{{this.UserId}}
+                    </div>
+
+                    <div class="col">
+                        Response: </br>{{this.responseStatus}}
+                    </div>
+                </div>
+                {{#if this.additionalData}}
+                    <div id="container row">
+                <pre>
+                    <code>
+                        {{this.additionalData}}
+                    </code>
+                </pre>
+                    </div>
+
+                {{/if}}
+            </div>
+        {{/each}}
+    {{/unless}}
+
+    {{#if this.empty}}
+    <div class="container bg-dark text-light rounded p-2 mt-1 mb-1">
+        <h1 class="text-primary text-center">Nothing found</h1>
+    </div>
+    {{/if}}
+</div>

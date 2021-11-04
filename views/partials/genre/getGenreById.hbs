@@ -1,0 +1,22 @@
+<div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+    <h2 class="text-info">Get Genre by id</h2>
+    <form id="getGenreByIdForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="GenreById">Genre id</label>
+            <input type="text" class="form-control" id="GenreById" aria-describedby="GenreByIdHelp" placeholder="Enter Genre id (UUIDv4)">
+            <small id="GenreByIdHelp" class="form-text text-muted">Genre to retrieve</small>
+        </div>
+
+        <button id="submitGetGenreById" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="getGenreByIdStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="getGenreByIdResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

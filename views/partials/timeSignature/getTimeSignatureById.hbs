@@ -1,0 +1,22 @@
+<div class="bg-light align-items-left text-left col p-3 ml-1 rounded">
+    <h2 class="text-info">Get time signature by id</h2>
+    <form id="getTimeSignatureByIdForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="timeSignatureById">TimeSignature id</label>
+            <input type="text" class="form-control" id="timeSignatureById" aria-describedby="timeSignatureByIdHelp" placeholder="Enter Time Signature id (UUIDv4)">
+            <small id="timeSignatureByIdHelp" class="form-text text-muted">TimeSignature to retrieve</small>
+        </div>
+
+        <button id="submitGetTimeSignatureById" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="getTimeSignatureByIdStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="getTimeSignatureByIdResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

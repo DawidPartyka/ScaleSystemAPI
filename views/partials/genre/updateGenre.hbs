@@ -1,0 +1,28 @@
+<div class="bg-light align-items-left text-left col p-3 rounded">
+    <h2 class="text-info">Update Genre by id</h2>
+    <form id="updateGenreByIdForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="updateGenre">Genre id</label>
+            <input type="text" class="form-control" id="updateGenre" aria-describedby="updateGenreHelp" placeholder="Enter Genre id (UUIDv4)">
+            <small id="updateGenreHelp" class="form-text text-muted">Id of Genre to be updated</small>
+        </div>
+
+        <div class="form-group">
+            <label for="updateGenreName">Genre name</label>
+            <input type="text" class="form-control" id="updateGenreName" aria-describedby="updateGenreNameHelp" placeholder="Enter genre name">
+            <small id="updateGenreNameHelp" class="form-text text-muted">New name of the existing Genre</small>
+        </div>
+
+        <button id="submitUpdateGenreById" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="updateGenreByIdStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="updateGenreByIdResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

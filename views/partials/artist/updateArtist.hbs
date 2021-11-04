@@ -1,0 +1,28 @@
+<div class="bg-light align-items-left text-left col p-3 rounded">
+    <h2 class="text-info">Update Artist by id</h2>
+    <form id="updateArtistByIdForm" onsubmit="return false">
+        <div class="form-group">
+            <label for="updateArtist">Artist id</label>
+            <input type="text" class="form-control" id="updateArtist" aria-describedby="updateArtistHelp" placeholder="Enter artist id (UUIDv4)">
+            <small id="updateArtistHelp" class="form-text text-muted">Id of artist to be updated</small>
+        </div>
+
+        <div class="form-group">
+            <label for="updateArtistName">Artist name</label>
+            <input type="text" class="form-control" id="updateArtistName" aria-describedby="updateArtistNameHelp" placeholder="Enter artist name">
+            <small id="updateArtistNameHelp" class="form-text text-muted">New name of the existing artist</small>
+        </div>
+
+        <button id="submitUpdateArtistById" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="text-primary">Status: </p>
+        <p id="updateArtistByIdStatus" class="text-info"></p>
+        <p class="text-primary">Response content:</p>
+        <pre>
+                    <code id="updateArtistByIdResponse">
+                    </code>
+                </pre>
+    </div>
+</div>

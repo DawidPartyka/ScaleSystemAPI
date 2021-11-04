@@ -1,0 +1,32 @@
+<div class="container-fluid mt-2">
+    {{> jamtrack/addJamtrack}}
+
+    <div class="row mt-1">
+        {{> jamtrack/getAllJamtracks}}
+        {{> jamtrack/getJamtrackById}}
+    </div>
+
+    <div class="row mt-1">
+        {{> jamtrack/updateJamtrack}}
+        {{> jamtrack/deleteJamtrack}}
+    </div>
+
+    <div class="row mt-1">
+        {{> jamtrack/deleteJamtrackArtist}}
+        {{> jamtrack/deleteJamtrackTimeSignature}}
+    </div>
+
+    <div class="row mt-1">
+        {{> jamtrack/deleteJamtrackScale}}
+        {{> jamtrack/addJamtrackTimeSignature}}
+    </div>
+
+    <div class="row mt-1">
+        {{> jamtrack/addJamtrackScale}}
+        {{> jamtrack/addJamtrackArtist}}
+    </div>
+
+    <div class="row mt-1">
+        {{> jamtrack/addJamtrackCover}}
+    </div>
+</div>
