@@ -699,7 +699,7 @@ exports.complexSearch = async (req, res) => {
 
     let err;
     const attributes = ['id', 'name', 'bpm', 'duration', 'ext'];
-    const include = [Genre];
+    const include = [Genre, Artist, Cover];
 
     const searchOptions = phrase ? nameSearch(phrase.replace(/%20/g, ' ').trim()) : {};
 

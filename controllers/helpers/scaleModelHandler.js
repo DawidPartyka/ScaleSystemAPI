@@ -333,12 +333,20 @@ const helper = {
                         }
                     ))
                 },
-                attributes: ['id', 'name', 'tonic', 'sounds']
+                attributes: ['name', 'tonic', 'sounds']
             },
             raw: true
         }).catch(e => err = e);
 
-        return err ? result(false, err) : result(true, scales);
+        return err ? result(false, err) : result(true, scales.map(x => {
+            const { id, createdAt, updatedAt, ScaleId } = x;
+            return {
+                id, createdAt, updatedAt, ScaleId,
+                name: x['Scale.name'],
+                tonic: x['Scale.tonic'],
+                sounds: x['Scale.sounds']
+            }
+        }));
     }
 }
 
