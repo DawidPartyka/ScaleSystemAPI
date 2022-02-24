@@ -13,7 +13,7 @@ class GenericRouter{
     }
 
     create() {
-        // Those imports ABSOLUTELY need to be here
+        // Those imports ABSOLUTELY needs to be here
         // Otherwise all controllers used in routes will be overwritten
         const express = require('express');
         const router = express.Router();

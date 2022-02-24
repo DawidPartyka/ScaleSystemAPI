@@ -294,19 +294,15 @@ exports.fileStream = async (req, res) => {
     const total = stat.size;
     const contentType = `audio/${fileData.ext === '.mp3' ? 'mpeg' : 'wav'}`;
 
-    const range = req.headers.range;
-    const parts = range.replace(/bytes=/, "").split("-");
-    const partialstart = parts[0];
-    const partialend = parts[1];
-
-    const start = parseInt(partialstart, 10);
-    const end = partialend ? parseInt(partialend, 10) : total-1;
-    const chunksize = (end-start)+1;
+    const parts = req.headers.range.replace(/bytes=/, "").split("-");
+    const start = parseInt(parts[0], 10);
+    const end = parts[1] ? parseInt(parts[1], 10) : total - 1;
+    const chunkSize = (end - start) + 1;
     const readStream = fs.createReadStream(filePath, {start: start, end: end});
 
     res.status(206)
         .set('Content-Range' , `bytes ${start}-${end}/${total}`)
-        .set('Content-Length', chunksize)
+        .set('Content-Length', chunkSize)
         .set('Accept-Ranges', 'bytes')
         .type(contentType);
 

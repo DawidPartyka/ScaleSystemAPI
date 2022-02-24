@@ -26,6 +26,14 @@ exports.add = async (req, res) => {
     if(!validate.soundArray(req.body.scale) ||
        !validate.bulkNotNull([req.body.name]) ||
        !validate.indexInSoundArray(tonic)){
+        console.log(req.body.scale);
+        console.log(req.body.name);
+        console.log(req.body.tonic);
+        console.log(tonic);
+        console.log(req.body);
+        console.log(validate.indexInSoundArray(tonic));
+        console.log(validate.bulkNotNull([req.body.name]));
+        console.log(validate.soundArray(req.body.scale));
         res.status(400)
             .send({msg: 'Bad request' })
             .json();
@@ -261,6 +269,14 @@ exports.scaleToTonic = async (req, res) => {
 
 exports.delete = async (req, res) => {
     const id = req.params.scaleId;
+
+    if(!validate.uuidv4(id)) {
+        console.log(id);
+        res.send({msg: 'No access to the resource'})
+            .json()
+            .status(403);
+    }
+
     const user = await userData(req);
     const logTitle = 'Scale deletion';
     const isAuthorized = scaleHelper.isAuthorized(user, id); // Checks if user should have access to a resource
@@ -402,7 +418,6 @@ exports.findPossibleScales = async (req, res) => {
         status: stat
     };
 
-    res.send(processed)
-        .json()
-        .status(stat);
+    res.status(stat) // TODO: make sure this is being correctly sent (without header errors) and received (as json)
+        .send(processed);
 }

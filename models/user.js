@@ -26,4 +26,3 @@ User.init({
 }, config);
 
 module.exports = User;
-

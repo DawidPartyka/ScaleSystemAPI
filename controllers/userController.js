@@ -47,8 +47,18 @@ exports.login = async (req, res) => {
     });
 
     if(user){
-        console.log(`User logged in - ${user.mail}`);
-        const authToken = generateAuthToken();
+        let tokenForUserExists = null;
+
+        for(const property in authTokens.data)
+        {
+            if(authTokens.data[property].mail === email)
+            {
+                tokenForUserExists = property;
+                break;
+            }
+        }
+
+        const authToken = tokenForUserExists ?? generateAuthToken();
         user.token = authToken;
 
         authTokens.data[authToken] = user;
@@ -194,16 +204,28 @@ exports.playFretboard = async (req, res) => {
     });
 }
 
-exports.userScaleLibrary = async (req, res) => {
+const userScaleLibraryRaw = async (req) => {
     const userInfo = await userRequestData(req);
     const scales = await scaleHelper.getUserScales(userInfo.dbid);
-    const status = scales.result ? scales.value.length > 0 ? 200 : 404 : 500;
 
-    const dataSend = scales.result ? scales.value.map((x) => {
+    return scales.result ? scales.value.map((x) => {
         const data = x.dataValues;
         data.tonic = indexSound(data.tonic);
         return data;
     }) : scales.value;
+}
+
+exports.userScaleLibraryJson = async (req, res) => {
+    const dataSend = await userScaleLibraryRaw(req);
+
+    res.send(dataSend)
+        .json()
+        .status(Array.isArray(dataSend) ? 200 : 500)
+        .end();
+}
+
+exports.userScaleLibrary = async (req, res) => {
+    const dataSend = await userScaleLibraryRaw(req);
 
     res.render('scaleList', {
         css: [routes.css.publicFiles.main],
@@ -211,11 +233,7 @@ exports.userScaleLibrary = async (req, res) => {
         jsModules: [routes.js.scale.searchPrivate],
         user: req.user,
         routes: routes.user,
-        scales: dataSend,
-        status: status,
-        success: status === 200,
-        empty: status === 404,
-        error: status === 500
+        scales: dataSend
     });
 }
 

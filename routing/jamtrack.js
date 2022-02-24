@@ -25,7 +25,7 @@ router.post('/addArtistRelation', checkManagement(options), controller.addJamtra
 router.post('/addTimeSignatureRelation', checkManagement(options), controller.addJamtrackTimeSignature);
 
 router.get('/latest/:token/:number', requireToken, checkUser, controller.latest);
-router.get('/fileStream/:jamtrackId', checkUser,controller.fileStream);
+router.get('/fileStream/:jamtrackId', checkUser, controller.fileStream);
 router.get('/fileStreamToken/:token/:jamtrackId', requireToken, checkUser,controller.fileStream);
 router.get('/getAll', checkUser, controller.getAllJamtracks);
 router.get('/getAllRaw', checkUser, controller.getAllJamtracksRaw);

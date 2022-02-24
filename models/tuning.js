@@ -11,7 +11,7 @@ Tuning.init({
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true
     },
-    tuning: {
+    sounds: {
         type: DataTypes.ARRAY(DataTypes.SMALLINT),
         allowNull: false
     },

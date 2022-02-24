@@ -6,6 +6,7 @@ const controller = require('../controllers/scaleController');
 const { Scale } = require("../models/allModels");
 
 router.post('/addScale', checkUser, controller.add);
+router.post('/addScaleToken/:token', requireToken, checkUser, controller.add);
 
 router.get('/getAll', controller.getPublic);
 router.get('/getPublicList', controller.getPublicScalesList);
@@ -24,7 +25,8 @@ router.get('/nameListToken/:token', requireToken, checkUser, controller.scaleNam
 
 router.patch('/update', checkUser, controller.update);
 
-router.delete('/deletebyid/:scaleId', controller.delete);
+router.delete('/deletebyid/:scaleId', checkUser, controller.delete);
+router.delete('/deleteByIdToken/:token/:scaleId', requireToken, checkUser, controller.delete);
 
 
 module.exports = {

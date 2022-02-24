@@ -30,6 +30,8 @@ router.get('/playFretboard/:id', checkUser, controller.playFretboard);
 
 router.get('/myScaleLibrary', requireUser, checkUser, controller.userScaleLibrary);
 
+router.get('/myScaleLibraryToken/:token', requireToken, requireUser, checkUser, controller.userScaleLibraryJson);
+
 router.get('/privateScaleUpdate/:id', checkUser, controller.privateScaleUpdate);
 
 router.get('/showScale/:id', checkUser, controller.showScale);

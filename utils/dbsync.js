@@ -1,7 +1,7 @@
 const pathModels = '../models/';
 const options = require(pathModels + 'options/standardSyncConfiguration');
 
-const { Tuning, User, UserLog, UserScale, TimeSignature, Scale, ScaleViews, Management, Jamtrack, Cover, Instrument,
+const { Tuning, User, UserLog, UserTuning, UserDefaultTuning, UserScale, TimeSignature, Scale, ScaleViews, Management, Jamtrack, Cover, Instrument,
     CustomScale, Artist, JamtrackScales, JamtrackArtists, JamtrackTimeSignatures, Genre, Featured }
     = require(pathModels + 'allModels');
 
@@ -28,6 +28,12 @@ module.exports = async () => {
 
     Artist.belongsToMany(Jamtrack, {through: {model: JamtrackArtists, unique: false}});
     Jamtrack.belongsToMany(Artist, {through: {model: JamtrackArtists, unique: false}});
+
+    User.belongsToMany(Tuning, {through: UserTuning});
+    Tuning.belongsToMany(User, {through: UserTuning});
+
+    Tuning.belongsToMany(User, {through: UserDefaultTuning});
+    User.belongsToMany(Tuning, {through: UserDefaultTuning});
 
     Scale.belongsToMany(User, {through: UserScale});
     User.belongsToMany(Scale, {through: UserScale});

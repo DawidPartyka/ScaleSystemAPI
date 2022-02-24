@@ -1,7 +1,6 @@
 const express = require('express');
 const routes = require('./routes');
 const path = require('path');
-const { requiresAuth  } = require('express-openid-connect');
 const checkUser = require('../utils/checkUser');
 const router = express.Router();
 const controller = require('../controllers/mainController');
@@ -21,6 +20,8 @@ router.get('/loginfirst', controller.loginFirst);
 router.get("/sign-up", controller.signup);
 
 router.get("/login", controller.login);
+
+router.get("/logout", checkUser, controller.logout);
 
 router.get("/logout", checkUser, controller.logout);
 

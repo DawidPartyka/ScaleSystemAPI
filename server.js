@@ -36,7 +36,7 @@ app.use(requireUser);
 
 const port = process.env.PORT || 8000;
 
-const server = https.createServer(options, app).listen(process.env.PORT || port, () => {
+const server = https.createServer(options, app).listen(port, () => {
     console.log(`>> Server listening at port ${server.address().port}`);
 });
 
