@@ -218,9 +218,8 @@ const userScaleLibraryRaw = async (req) => {
 exports.userScaleLibraryJson = async (req, res) => {
     const dataSend = await userScaleLibraryRaw(req);
 
-    res.send(dataSend)
-        .json()
-        .status(Array.isArray(dataSend) ? 200 : 500)
+    res.status(Array.isArray(dataSend) ? 200 : 500)
+        .send(dataSend)
         .end();
 }
 

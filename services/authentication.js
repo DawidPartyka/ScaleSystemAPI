@@ -43,7 +43,6 @@ const requireToken = (req, res, next) => {
 }
 
 const checkUser = async (req, res, next) => {
-    console.log(req.user);
     if(!req.user){
         res.status(401).send({msg: "Unauthorized access attempt"}).json().end();
         return;
