@@ -10,6 +10,7 @@ router.post('/addScaleToken/:token', requireToken, checkUser, controller.add);
 
 router.get('/getAll', controller.getPublic);
 router.get('/getPublicList', controller.getPublicScalesList);
+router.get('/getPublicListToken/:token', requireToken, controller.getPublicScalesListJson);
 router.get('/getUserScale', checkUser, controller.getUserScale);
 router.get('/getAllUserScales', checkUser, controller.userScales);
 router.get('/getById/:scaleId', resourceIdExists(Scale, 'scaleId', false), userAuthorizedToScale, controller.getById);

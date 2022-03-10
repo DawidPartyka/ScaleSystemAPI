@@ -93,6 +93,17 @@ exports.getPublicScalesList = async (req, res) => {
     });
 }
 
+exports.getPublicScalesListJson = async (req, res) => {
+    const scales = await scaleHelper.getAllPublic();
+
+    if(!scales.result)
+        return res.send({msg: scales.value})
+            .json()
+            .status(500);
+
+    res.send(scaleHelper.flattenFeaturedScale(scales)).status(200)
+}
+
 exports.getUserScale = async (req, res) => {
     const user = await userData(req);
     const logTitle = 'Get user scales';
