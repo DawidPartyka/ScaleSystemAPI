@@ -661,7 +661,7 @@ exports.search = async (req, res) => {
     const logTitle = 'Jamtrack search';
 
     if(!validate.stringValue(search) || search.length > 255){
-        res.status(401)
+        res.status(400)
             .send({msg: 'Bad request'})
             .json();
 
@@ -692,6 +692,24 @@ exports.search = async (req, res) => {
 
 exports.complexSearch = async (req, res) => {
     const { phrase, genreId, scaleId } = req.query;
+
+    const existsAndIsUuid = (param) => {
+        if(param) {
+            if(!validate.uuidv4(param))
+            {
+                res.status(400)
+                    .send({msg: `Not a valid UUID: ${param}`});
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    if(!existsAndIsUuid(genreId) || !existsAndIsUuid(scaleId))
+    {
+        return;
+    }
 
     let err;
     const attributes = ['id', 'name', 'bpm', 'duration', 'ext'];
