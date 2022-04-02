@@ -1,4 +1,3 @@
-// Makes imports of models in modules shorter in general
 const pathModels = './';
 
 exports.Tuning = require(pathModels + 'tuning');
@@ -21,3 +20,4 @@ exports.JamtrackTimeSignatures = require(pathModels + 'jamtrackTimeSignatures');
 exports.Genre = require(pathModels + 'genre');
 exports.Featured = require(pathModels + 'featured');
 exports.Cover = require(pathModels + 'cover');
+exports.UserFavouriteJamtracks = require(pathModels + 'UserFavouriteJamtracks');

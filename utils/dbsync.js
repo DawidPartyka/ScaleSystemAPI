@@ -2,7 +2,7 @@ const pathModels = '../models/';
 const options = require(pathModels + 'options/standardSyncConfiguration');
 
 const { Tuning, User, UserLog, UserTuning, UserDefaultTuning, UserScale, TimeSignature, Scale, ScaleViews, Management, Jamtrack, Cover, Instrument,
-    CustomScale, Artist, JamtrackScales, JamtrackArtists, JamtrackTimeSignatures, Genre, Featured }
+    CustomScale, Artist, JamtrackScales, JamtrackArtists, JamtrackTimeSignatures, Genre, Featured, UserFavouriteJamtracks }
     = require(pathModels + 'allModels');
 
 const sequelize = require('./postgresConnection');
@@ -18,6 +18,9 @@ module.exports = async () => {
 
     TimeSignature.belongsToMany(Jamtrack, {through: {model: JamtrackTimeSignatures, unique: false}});
     Jamtrack.belongsToMany(TimeSignature, {through: {model: JamtrackTimeSignatures, unique: false}});
+
+    User.belongsToMany(Jamtrack, {through: {model: UserFavouriteJamtracks, unique: false}});
+    Jamtrack.belongsToMany(User, {through: {model: UserFavouriteJamtracks, unique: false}});
 
     //Jamtrack.belongsToMany(Scale, {through: {model: JamtrackScales, unique: false}});
     Jamtrack.hasMany(JamtrackScales);

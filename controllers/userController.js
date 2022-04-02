@@ -1,4 +1,4 @@
-const { User, Scale } = require('../models/allModels');
+const { User, Scale, UserFavouriteJamtracks } = require('../models/allModels');
 const routes = require('../routing/routes');
 const userLogHelper = require('./helpers/userLogModelHandler');
 const userRequestData = require('./helpers/userRequestData');
@@ -203,6 +203,53 @@ exports.playFretboard = async (req, res) => {
         jamtrackData: jamtrackHelper.formatData([data.value])[0]
     });
 }
+
+exports.addJamtrackToFavourites = async(req, res) => {
+    let errorOccurred = false;
+    await UserFavouriteJamtracks.create({
+        UserId: req.user.id,
+        JamtrackId: req.body.jamtrackId
+    }).catch(e => errorOccurred = e);
+
+    if(!errorOccurred) {
+        res.status(201).send({msg: "Created"});
+        return;
+    }
+
+    res.status(500).send({msg: "Something went wrong"});
+    console.log(errorOccurred);
+}
+
+exports.getAllFavouriteJamtracks = async (req, res) => {
+    const favourites = await UserFavouriteJamtracks.findAll({
+        attributes: ['JamtrackId'],
+        where: {
+            UserId: req.user.id
+        }
+    });
+
+    res.send({favourites}).status(200);
+}
+
+exports.removeJamtrackFromFavourites = async(req, res) => {
+    let errorOccurred = false;
+    const deleted = await UserFavouriteJamtracks.destroy({
+        where: {
+            UserId: req.user.id,
+            JamtrackId: req.params.jamtrackId
+        }
+    }).catch(e => errorOccurred = e);
+
+    if(!errorOccurred) {
+        res.status(200).send({deleted});
+        return;
+    }
+
+    res.status(500).send({msg: "Something went wrong"});
+    console.log(errorOccurred);
+}
+
+
 
 const userScaleLibraryRaw = async (req) => {
     const userInfo = await userRequestData(req);

@@ -3,7 +3,7 @@ const config = require('./options/standardConfiguration');
 
 config.modelName = 'JamtrackArtists';
 
-class JamtrackArtists extends Model {}
+class JamtrackArtists extends Model {};
 
 JamtrackArtists.init({}, config);
 

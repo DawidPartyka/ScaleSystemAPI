@@ -2,11 +2,18 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/userController');
 const  { checkUser, requireToken, requireUser } = require('../services/authentication');
-const { emailAndPassword, emailTaken } = require('../services/validations');
+const { emailAndPassword, emailTaken, resourceIdExists } = require('../services/validations');
+const Jamtrack = require("../models/jamtrack");
 
 router.post('/login', emailAndPassword, controller.login);
 
 router.post('/register', emailAndPassword, emailTaken, controller.register);
+
+router.post('/addJamtrackToFavourites/:token', requireToken, checkUser, resourceIdExists(Jamtrack, 'jamtrackId'), controller.addJamtrackToFavourites);
+
+router.delete('/deleteJamtrackFromFavourites/:token/:jamtrackId', requireToken, checkUser, resourceIdExists(Jamtrack, 'jamtrackId', false), controller.removeJamtrackFromFavourites);
+
+router.get('/getFavouriteJamtracks/:token', requireToken, checkUser, controller.getAllFavouriteJamtracks);
 
 router.get('/validateToken/:token', controller.validateToken);
 

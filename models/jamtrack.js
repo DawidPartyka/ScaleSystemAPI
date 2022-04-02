@@ -1,5 +1,4 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
-const path = require('path');
 const config = require('./options/standardConfiguration');
 
 config.modelName = 'Jamtrack';
