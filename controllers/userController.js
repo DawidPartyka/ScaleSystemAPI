@@ -1,4 +1,13 @@
-const { User, Scale, UserFavouriteJamtracks } = require('../models/allModels');
+const {
+    User,
+    Scale,
+    UserFavouriteJamtracks,
+    Jamtrack,
+    Genre,
+    Artist,
+    Cover
+} = require('../models/allModels');
+const { Op } = require('sequelize');
 const routes = require('../routing/routes');
 const userLogHelper = require('./helpers/userLogModelHandler');
 const userRequestData = require('./helpers/userRequestData');
@@ -220,13 +229,32 @@ exports.addJamtrackToFavourites = async(req, res) => {
     console.log(errorOccurred);
 }
 
+const getFavouriteJamtracks = async (userId, jamtrackIds) => {
+    const jamtrackIdsMap = jamtrackIds.map(jamtrack => {
+        return { id: jamtrack.JamtrackId };
+    });
+
+    return await Jamtrack.findAll({
+        attributes: ['id', 'name', 'bpm', 'duration', 'CoverId'],
+        include: [Genre, Cover, Artist],
+        where: {
+            [Op.or]: jamtrackIdsMap
+        },
+        order: [
+            [Genre, 'name', 'asc']
+        ]
+    });
+}
+
 exports.getAllFavouriteJamtracks = async (req, res) => {
-    const favourites = await UserFavouriteJamtracks.findAll({
+    const favouriteIds = await UserFavouriteJamtracks.findAll({
         attributes: ['JamtrackId'],
         where: {
             UserId: req.user.id
         }
     });
+
+    const favourites = await getFavouriteJamtracks(req.user.id, favouriteIds);
 
     res.send({favourites}).status(200);
 }
